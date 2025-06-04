@@ -28,11 +28,24 @@ Follow these steps to get the application running locally for development and te
 **1. Prerequisites:**
 
 -   Node.js and npm (or yarn/pnpm)
--   Python 3.8+
+-   **Python 3.11+** (Note: This project requires Python 3.11 or higher, not 3.8+)
 -   **`GEMINI_API_KEY`**: The backend agent requires a Google Gemini API key.
     1.  Navigate to the `backend/` directory.
     2.  Create a file named `.env` by copying the `backend/.env.example` file.
     3.  Open the `.env` file and add your Gemini API key: `GEMINI_API_KEY="YOUR_ACTUAL_API_KEY"`
+
+**Installing Python 3.11 on Ubuntu (if needed):**
+
+```bash
+# Method 1: Using deadsnakes PPA
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
+sudo apt install python3.11 python3.11-venv python3.11-pip python3.11-dev
+
+# Method 2: If PPA fails, use snap
+sudo snap install python311 --classic
+sudo ln -sf /snap/python311/current/bin/python3.11 /usr/local/bin/python3.11
+```
 
 **2. Install Dependencies:**
 
@@ -40,6 +53,15 @@ Follow these steps to get the application running locally for development and te
 
 ```bash
 cd backend
+
+# Create virtual environment with Python 3.11
+python3.11 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install dependencies
+pip install --upgrade pip
 pip install .
 ```
 
@@ -105,4 +127,4 @@ Open your browser and navigate to `http://localhost:8123/app/` to see the applic
 
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details. 
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
